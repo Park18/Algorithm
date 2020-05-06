@@ -23,18 +23,17 @@ void test_main_1(int argc, char* argv[])
 void test_main_2()
 {
 	int count[1001];
-	count[0] = 1;
 	count[1] = 1;
+	count[2] = 2;
 
 	int n;
+	cin.tie(nullptr);
 	cin >> n;
 
-	if(n > 1)
-		for (int index = 2; index <= n; index++)
-			count[index] = count[index - 1] + count[index - 2];
+	for (int index = 3; index <= n; index++)
+		count[index] = (count[index - 1] + count[index - 2]) % 10007;
 
-	int n_count = count[n];
-	cout << count[n] % 10007 << endl;
+	cout << count[n] << endl;
 	
 }
 
