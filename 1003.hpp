@@ -78,7 +78,7 @@ namespace my
 			cout << dp[index].num_0 << " " << dp[index].num_1 << endl;
 	}
 
-#define MAX_SIZE 40
+#define MAX_SIZE 41
 	void test_main_3()
 	{
 		// 변수 선언
@@ -104,5 +104,39 @@ namespace my
 			for (int index = 0; index < MAX_SIZE; index++)			
 				if(size[size_count] == index)
 					cout << dp[index].num_0 << " " << dp[index].num_1 << endl;		
+	}
+
+	void test_main_4()
+	{
+		int t;
+		int size[MAX_SIZE];
+		int num_0[MAX_SIZE];
+		int num_1[MAX_SIZE];
+
+		// 입력
+		cin >> t;
+		for (int index = 0; index < t; index++)
+			cin >> size[index];
+		// dp 초기화
+		num_0[0] = 1;
+		num_1[0] = 0;
+		num_0[1] = 0;
+		num_1[1] = 1;
+
+		// dp 계산
+		for (int index = 2; index <= *max_element(size, size + t); index++)
+		{
+			num_0[index] = num_0[index - 1] + num_0[index - 2];
+			num_1[index] = num_1[index - 1] + num_1[index - 2];
+		}
+
+		// 값 출력
+		for (int size_count = 0; size_count < t; size_count++)
+			for (int index = 0; index < MAX_SIZE; index++)
+			{
+				if (size[size_count] == index)
+					cout << num_0[index]<< " " << num_1[index] << endl;
+
+			}
 	}
 }
