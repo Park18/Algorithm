@@ -75,7 +75,7 @@ namespace my
 
 		// °ª Ãâ·Â
 		for (int index = 0; index < t; index++)
-			cout << dp[index].num_0 << " " << dp[index].num_1 << endl;
+			cout << dp[size[index]].num_0 << " " << dp[size[index]].num_1 << endl;
 	}
 
 #define MAX_SIZE 41
