@@ -82,13 +82,13 @@ namespace my
 	void test_main_3()
 	{
 		// 변수 선언
-		int t;
+		int count;
 		int size[MAX_SIZE];
 		N dp[MAX_SIZE];
 
 		// 입력
-		cin >> t;
-		for (int index = 0; index < t; index++)
+		cin >> count;
+		for (int index = 0; index < count; index++)
 			cin >> size[index];
 
 		// dp 초기화
@@ -96,14 +96,12 @@ namespace my
 		dp[1] = N(0, 1);
 
 		// dp 계산
-		for (int index = 2; index <= *max_element(size, size + t); index++)
+		for (int index = 2; index <= *max_element(size, size + count); index++)
 			dp[index] = dp[index - 1] + dp[index - 2];
 
 		// 값 출력
-		for (int size_count = 0; size_count < t; size_count++)	
-			for (int index = 0; index < MAX_SIZE; index++)			
-				if(size[size_count] == index)
-					cout << dp[index].num_0 << " " << dp[index].num_1 << endl;		
+		for (int index = 0; index < count; index++)
+			cout << dp[size[index]].num_0 << " " << dp[size[index]].num_1 << endl;
 	}
 
 	void test_main_4()
