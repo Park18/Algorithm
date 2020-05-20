@@ -5,15 +5,11 @@
 
 using namespace std;
 
-namespace my
+namespace boj
 {
-	/*struct N
-	{
-		int num_0;
-		int num_1;
-
-		N(int num_0, int num_1) : num_0(num_0), num_1(num_1) {};
-	};*/
+namespace silver
+{
+#define MAX_SIZE 41
 
 	class N
 	{
@@ -25,8 +21,8 @@ namespace my
 		N(int num_0, int num_1) :num_0(num_0), num_1(num_1) {};
 		N operator+(N& other) { return N(num_0 + other.num_0, num_1 + other.num_1); }
 	};
-
-	void test_main_1()
+		
+	void test_2()
 	{
 		// 변수 선언
 		int t;
@@ -55,7 +51,7 @@ namespace my
 			cout << dp[index].num_0 << " " << dp[index].num_1 << endl;
 	}
 
-	void test_main_2()
+	void test_2()
 	{
 		int t;
 		cin >> t;
@@ -78,8 +74,7 @@ namespace my
 			cout << dp[size[index]].num_0 << " " << dp[size[index]].num_1 << endl;
 	}
 
-#define MAX_SIZE 41
-	void test_main_3()
+	void test_3()
 	{
 		// 변수 선언
 		int count;
@@ -104,7 +99,7 @@ namespace my
 			cout << dp[size[index]].num_0 << " " << dp[size[index]].num_1 << endl;
 	}
 
-	void test_main_4()
+	void test_4()
 	{
 		int t;
 		int size[MAX_SIZE];
@@ -129,12 +124,8 @@ namespace my
 		}
 
 		// 값 출력
-		for (int size_count = 0; size_count < t; size_count++)
-			for (int index = 0; index < MAX_SIZE; index++)
-			{
-				if (size[size_count] == index)
-					cout << num_0[index]<< " " << num_1[index] << endl;
-
-			}
+		for (int index = 0; index < t; index++)
+			cout << num_0[size[index]] << " " << num_1[size[index]] << endl;
 	}
-}
+} // !namespace silver
+} // !namespace boj

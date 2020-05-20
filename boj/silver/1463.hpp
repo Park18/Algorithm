@@ -14,9 +14,44 @@
 
 using namespace std;
 
-namespace my
+namespace boj
 {
+namespace silver
+{
+    int solution()
+    {
+        // n 입력
+        int n;
+        cin >> n;
 
+        // dp 초기화
+        int dp[1000001];
+        dp[2] = 1;
+        dp[3] = 1;
+
+        // dp 계산
+        // dp[num]이 될 수 있는 조건은
+        // num이 2의 배수일 때, dp[num - 1], dp[num / 2]의 경우의 수가 있고
+        // num이 3의 배수일 때, dp[num - 1], dp[num / 3]의 경우의 수가 있고
+        // num이 2와 3의 배수가 아닐 때, dp[num] = dp[num - 1]의 경우의 수만 있다.
+        for (int num = 4; num <= n; num++)
+        {
+            dp[num] = dp[num - 1] + 1;
+
+            if (num % 2 == 0)
+                dp[num] = min(dp[num], dp[num / 2] + 1);
+
+            if (num % 3 == 0)
+                dp[num] = min(dp[num], dp[num / 3] + 1);
+        }
+
+        // 결과 출력
+        cout << dp[n] << endl;
+    }
+
+///---------------------------------------------------------------------------
+/// 실패한 알고리즘
+///---------------------------------------------------------------------------
 #define MAX_SIZE 3    // 다음 수를 정할 때 쓰이는 배열의 최대 크기 
 #define TYPE_1 0      // /2일 때의 값의 인덱스
 #define TYPE_2 1      // /3일 때의 값의 인덱스
@@ -30,7 +65,7 @@ namespace my
 
     int get_next(int x)
     {
-        // value setting
+        // 값 설정
         NEXT_NUM tmp[MAX_SIZE] = { 0 };
         if (x % 2 == 0)
             tmp[TYPE_1].num = x / 2;
@@ -40,7 +75,7 @@ namespace my
 
         tmp[TYPE_3].num = x - 1;
 
-        // value's priority setting
+        // 값의 우선순위 설정
         for (int index = 0; index < 3; index++)
         {
             if (tmp[index].num == 0)
@@ -62,7 +97,7 @@ namespace my
                 tmp[index].priority = 2;
         }
 
-        // value's priority compare
+        // 값의 우선순위 비교
         NEXT_NUM* next_num = NULL;
         if (tmp[TYPE_1].priority <= tmp[TYPE_2].priority)
             next_num = &tmp[TYPE_1];
@@ -74,7 +109,7 @@ namespace my
 
         return next_num->num;
     }
-
+    
     int get_count(int x)
     {
         if (x == 1)
@@ -83,7 +118,7 @@ namespace my
         return 1 + get_count(get_next(x));
     }
 
-    int test_main(int argc, char* argv[])
+    int solution_2(int argc, char* argv[])
     {
         int x;
         cin >> x;
@@ -91,35 +126,5 @@ namespace my
 
         return 0;
     }
-
-}
-
-namespace h
-{
-
-#define ARR_SIZE 1000001
-
-
-int test_main() {
-    int input = 0;
-    cin >> input;
-
-    int* arr = new int[ARR_SIZE];
-    fill_n(arr, ARR_SIZE, 0);
-    arr[1] = 0;
-
-    for (int i = 2; i <= input; i++) {
-        arr[i] = arr[i - 1] + 1;
-        if (i % 2 == 0) {
-            arr[i] = min(arr[i], arr[i / 2] + 1);
-        }
-        if (i % 3 == 0) {
-            arr[i] = min(arr[i], arr[i / 3] + 1);
-        }
-    }
-
-    cout << arr[input] << endl;
-    delete[] arr;
-    return 0;
-}
-}
+} // !namespace silver
+} // !namespace boj
