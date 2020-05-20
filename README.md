@@ -12,9 +12,6 @@
 	* [2579](https://www.acmicpc.net/problem/2579)
 	* [9657](https://www.acmicpc.net/problem/9657)
 ### 디렉토리 경로
-boj
-	?등급
-		?문제
+boj::등급::문제
 ### namespace
-boj
-	?등급
+boj::등급
