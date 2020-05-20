@@ -21,24 +21,40 @@
  *****************************************************************/
 #pragma once
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-namespace my
+namespace boj
 {
-#define MAX_SIZE 300
-    int main_test_1()
+namespace silver
+{
+#define MAX_SIZE 301 // 계단 개수
+    int solution()
     {
-        int count;
-        cin >> count;
+        // 계단 수 입력
+        int n; // 계단의 개수
+        cin >> n;
 
-        int score[MAX_SIZE] = { 0 };
-        for (int index = 1; index <= count; index++)
-            cin >> score[index];
-        
+        // 계단 별 점수 입력
+        int score[MAX_SIZE] = { 0 }; // 계단 점수
+        for (int step = 1; step <= n; step++)
+            cin >> score[step];
 
+        // dp 초기화
+        int dp[MAX_SIZE] = { 0 }; // dp
+        dp[1] = score[1];
+        dp[2] = score[1] + score[2];
+        dp[3] = max(score[1] + score[3], score[2] + score[3]);
 
+        // dp 계산
+        for (int step = 4; step <= n; step++)
+            dp[step] = max(dp[step - 3] + score[step - 1] + score[step],
+                dp[step - 2] + score[step]);
+
+        // 결과 출력
+        cout << dp[n] << endl;
         return 0;
     }
-
-}
+} // !namespace silver
+} // !namespace boj

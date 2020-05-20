@@ -10,34 +10,14 @@
 
 using namespace std;
 
-namespace my
+namespace boj
 {
-	/**
-	 * @brief 피보나치 함수
-	 * @param int n 
-	 */
-	int fibo(int n)
-	{
-		if (n == 0 || n == 1) return 1;
-		return fibo(n - 1) + fibo(n - 2);
-	}
-
-	/**
-	 * @brief 피보나치를 이용한 문제풀이
-	 */
-	void test_main_1(int argc, char* argv[])
-	{
-		int n;
-		cin >> n;
-
-		int count = fibo(n);
-		cout << count % 10007 << endl;
-	}
-
+namespace silver
+{
 	/**
 	 * @brief DP를 이용한 문제풀이
 	 */
-	void test_main_2()
+	void solution()
 	{
 		int count[1001];	// 1<=n<=1000
 		count[1] = 1;		// 초기값1
@@ -53,8 +33,25 @@ namespace my
 		for (int index = 3; index <= n; index++)
 			count[index] = (count[index - 1] + count[index - 2]) % 10007;
 
-		cout << count[n] << endl;
-	
+		cout << count[n] << endl;	
 	}
 
-}
+	/**
+	 * @brief 재귀를 이용한 문제풀이, 시간초과
+	 */
+	int fibo(int n)
+	{
+		if (n == 0 || n == 1) return 1;
+		return fibo(n - 1) + fibo(n - 2);
+	}
+
+	void test_1 (int argc, char* argv[])
+	{
+		int n;
+		cin >> n;
+
+		int count = fibo(n);
+		cout << count % 10007 << endl;
+	}
+} // !namespace silver
+} // !namespace boj
