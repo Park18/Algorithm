@@ -22,75 +22,75 @@ namespace my
 #define TYPE_2 1      // /3일 때의 값의 인덱스
 #define TYPE_3 2      // -1일 때의 값의 인덱스
 
-typedef struct NEXT_NUM
-{
-    int num;        // 다음 값의 수
-    int priority;   // 우선순위
-}NEXT_NUM;
-
-int get_next(int x)
-{
-    // value setting
-    NEXT_NUM tmp[MAX_SIZE] = { 0 };
-    if (x % 2 == 0)
-        tmp[TYPE_1].num = x / 2;
-
-    if (x % 3 == 0)
-        tmp[TYPE_2].num = x / 3;
-
-    tmp[TYPE_3].num = x - 1;
-
-    // value's priority setting
-    for (int index = 0; index < 3; index++)
+    typedef struct NEXT_NUM
     {
-        if (tmp[index].num == 0)
+        int num;        // 다음 값의 수
+        int priority;   // 우선순위
+    }NEXT_NUM;
+
+    int get_next(int x)
+    {
+        // value setting
+        NEXT_NUM tmp[MAX_SIZE] = { 0 };
+        if (x % 2 == 0)
+            tmp[TYPE_1].num = x / 2;
+
+        if (x % 3 == 0)
+            tmp[TYPE_2].num = x / 3;
+
+        tmp[TYPE_3].num = x - 1;
+
+        // value's priority setting
+        for (int index = 0; index < 3; index++)
         {
-            tmp[index].priority = 3;
-            continue;
+            if (tmp[index].num == 0)
+            {
+                tmp[index].priority = 3;
+                continue;
+            }
+
+            if (tmp[index].num == 1)
+            {
+                tmp[index].priority = 0;
+                continue;
+            }
+
+            if (tmp[index].num % 2 == 0 || tmp[index].num % 3 == 0)
+                tmp[index].priority = 1;
+
+            else
+                tmp[index].priority = 2;
         }
 
-        if (tmp[index].num == 1)
-        {
-            tmp[index].priority = 0;
-            continue;
-        }
-
-        if (tmp[index].num % 2 == 0 || tmp[index].num % 3 == 0)
-            tmp[index].priority = 1;
-
+        // value's priority compare
+        NEXT_NUM* next_num = NULL;
+        if (tmp[TYPE_1].priority <= tmp[TYPE_2].priority)
+            next_num = &tmp[TYPE_1];
         else
-            tmp[index].priority = 2;
+            next_num = &tmp[TYPE_2];
+
+        if(next_num->priority > tmp[TYPE_3].priority)
+            next_num = &tmp[TYPE_3];
+
+        return next_num->num;
     }
 
-    // value's priority compare
-    NEXT_NUM* next_num = NULL;
-    if (tmp[TYPE_1].priority <= tmp[TYPE_2].priority)
-        next_num = &tmp[TYPE_1];
-    else
-        next_num = &tmp[TYPE_2];
+    int get_count(int x)
+    {
+        if (x == 1)
+            return 0;
 
-    if(next_num->priority > tmp[TYPE_3].priority)
-        next_num = &tmp[TYPE_3];
+        return 1 + get_count(get_next(x));
+    }
 
-    return next_num->num;
-}
+    int test_main(int argc, char* argv[])
+    {
+        int x;
+        cin >> x;
+        cout << get_count(x) << endl;
 
-int get_count(int x)
-{
-    if (x == 1)
         return 0;
-
-    return 1 + get_count(get_next(x));
-}
-
-int test_main(int argc, char* argv[])
-{
-    int x;
-    cin >> x;
-    cout << get_count(x) << endl;
-
-    return 0;
-}
+    }
 
 }
 
