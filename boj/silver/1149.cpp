@@ -86,11 +86,11 @@ namespace silver
 } // !namespace silver
 } // !namespace boj
 
-using namespace boj::silver;
-int main()
-{
-    boj::silver::test();
-
-
-    return 0;
-}
+//using namespace boj::silver;
+//int main()
+//{
+//    boj::silver::test();
+//
+//
+//    return 0;
+//}
