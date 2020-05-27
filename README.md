@@ -11,6 +11,8 @@
 	* [1904](https://www.acmicpc.net/problem/1904)
 	* [2579](https://www.acmicpc.net/problem/2579)
 	* [9657](https://www.acmicpc.net/problem/9657)
+	* [9095](https://www.acmicpc.net/problem/9095)
+	* [1149](https://www.acmicpc.net/problem/1149)
 ### 디렉토리 경로
 boj::등급::문제
 ### namespace
