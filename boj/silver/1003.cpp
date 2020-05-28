@@ -1,15 +1,27 @@
-#pragma once
+/**
+ * @date 20.05.16
+ * @brief BOJ 1003
+ * @url https://www.acmicpc.net/problem/1003
+ */
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
 
-using namespace std;
+#define MAX_SIZE 41
 
+using namespace std;
 namespace boj
 {
 namespace silver
 {
-#define MAX_SIZE 41
+	/**
+	 * @brief ,스터디 후에 풀음
+	 */
+	void solution()
+	{
+
+	}
 
 	class N
 	{

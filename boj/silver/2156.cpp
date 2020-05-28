@@ -1,6 +1,7 @@
 /**
- * @brief 2156
  * @date 20/5/26
+ * @brief BOJ 2156
+ * @url https://www.acmicpc.net/problem/2156
  */
 
 #include <iostream>
@@ -64,7 +65,7 @@ namespace silver
         {
             dp[i] = max(dp[i - 3] + arr[i - 1] + arr[i], dp[i - 2] + arr[i]);
 
-            if (dp[i] < dp[i - 1])dp[i] = dp[i - 1];
+            if (dp[i] < dp[i - 1]) dp[i] = dp[i - 1];
         }
 
         // 결과 출력

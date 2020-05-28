@@ -1,11 +1,9 @@
-/*****************************************************************
- * https://www.acmicpc.net/problem/11726
- * 문제
- * 2xn 크기의 직사각형을 1x2, 2x1 타일로 채우는 방법의 수를 구하는
- * 프로그램을 작성하시오.
- *****************************************************************/
+/**
+ * @date 20.05.06
+ * @brief BOJ 11726
+ * @url https://www.acmicpc.net/problem/11726
+ */
 
-#pragma once
 #include <iostream>
 
 using namespace std;
@@ -45,7 +43,7 @@ namespace silver
 		return fibo(n - 1) + fibo(n - 2);
 	}
 
-	void test_1 (int argc, char* argv[])
+	void test(int argc, char* argv[])
 	{
 		int n;
 		cin >> n;

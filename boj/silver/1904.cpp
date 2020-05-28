@@ -1,13 +1,21 @@
+/**
+ * @date 20.05.18
+ * @brief BOJ 1904
+ * @url https://www.acmicpc.net/problem/1904
+ */
+
 #include <iostream>
 
 #define MAX_SIZE 1000001
 
 using namespace std;
-
 namespace boj
 {
 namespace silver
 {
+    /**
+     * @brief DP를 이용한 문제풀이
+     */
     int solution()
     {
         // dp 초기화

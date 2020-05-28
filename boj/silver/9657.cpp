@@ -1,13 +1,21 @@
-#pragma once
+/**
+ * @date 20.05.20
+ * @brief BOJ 9657
+ * @url https://www.acmicpc.net/problem/9657
+ */
+
 #include <iostream>
 
-using namespace std;
+#define MAX_SIZE 1001
 
+using namespace std;
 namespace boj
 {
 namespace silver
 {
-#define MAX_SIZE 1001
+    /**
+     * @brief DP를 이용한 문제풀이
+     */
 	void solution()
 	{
         // n 입력

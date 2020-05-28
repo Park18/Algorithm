@@ -1,19 +1,22 @@
 /**
  * @date 20.05.22
  * @brief BOJ 9095
+ * @url https://www.acmicpc.net/problem/9095
  */
 
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
+#define MAX_SIZE 12
 
+using namespace std;
 namespace boj
 {
 namespace silver
 {
-#define MAX_SIZE 12
-
+    /**
+     * @brief DP를 이용한 문제풀이
+     */
     void soultion()
     {
         // 입력
