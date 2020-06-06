@@ -1,47 +1,60 @@
+/**
+ * @date 20.06.03
+ * @brief BOJ 11054
+ * @url https://www.acmicpc.net/problem/11054
+ */
+
 #include <iostream>
 #include <algorithm>
-#include <vector>
 
 using namespace std;
-int main()
+namespace boj
 {
-	int time;
-	cin >> time;
+namespace gold
+{
+    /**
+     * @brief 올라가는 형식의 dp계산하는 메소드
+     * @param 
+     * @param dp 연산을 저장할 dp 배열
+     * @param 배열의 크기
+     */
+    void get_dp_up(int* dp, int size)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 1; j < i; j++)
+            {
+                if()
+            }
+        }
+    }
 
-	vector<int> A;
-	for (int index = 0; index < time; index++)
-	{
-		int val;
-		cin >> val;
-		A.push_back(val);
+    void get_dp_down(int* dp, int size)
+    {
 
-	}
+    }
 
-	// 1, 2, 3, 4, 5
-	vector<int> dp_1;
-	for (int A_index = find(A.begin(), A.end(), *min_element(A.begin(), A.end())) - A.begin(), dp_index = 0; A_index < A.size(); A_index++)
-	{
-		if (dp_index == 0) 
-		{
-			dp_1.push_back(A.at(A_index)); 
-			continue;
-		}
+    void solution()
+    {
+        // 입력
+        int time;
+        cin >> time;
 
-		if (A.at(A_index) > dp_1.at(dp_index - 1))
-		{
-			dp_1.push_back(A.at(A_index));
-			dp_index++;
-		}
-	}
+        int* A = new int[time];
+        for (int index = 0; index < time; index++) cin >> A[index];
 
-	for (int index = 0; index < dp_1.size(); index++)
-		cout << dp_1.at(index) << ", ";
+        //dp 초기화
+        int* dp_up = new int[time];
+        int* dp_down = new int[time];
 
-	// 5, 4, 3, 2, 1
-	int* dp_2 = new int[time];
-	int dp_2_size = 0;
+        // dp 계산
+        get_dp_up(dp_up);
+        get_dp_down(dp_down);
 
-	// 1, 2, 4, 3, 1
-	int* dp_3 = new int[time];
+        int ans = -100000000;
 
-}
+        // 결과 출력
+        cout << ans << endl;
+    }
+} // !namespace gold
+} // !namespace boj

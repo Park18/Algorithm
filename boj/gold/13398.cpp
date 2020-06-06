@@ -1,3 +1,9 @@
+/**
+ * @date 20.06.02
+ * @brief BOJ 13398
+ * @url https://www.acmicpc.net/problem/13398
+ */
+
 #include <iostream>
 #include <algorithm>
 
@@ -81,5 +87,5 @@ namespace gold
 
 		cout << ans << endl;
 	}
-}
-}
+} // !namespace gold
+} // !namespace silver
