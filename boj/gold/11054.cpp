@@ -8,53 +8,72 @@
 #include <algorithm>
 
 using namespace std;
-namespace boj
+
+int* A;
+int* dp_up;
+int* dp_down;
+int* dp;
+
+/**
+ * @brief 올라가는 형식의 dp계산하는 메소드
+ * @param 배열의 크기
+ */
+void get_dp_up(int size)
 {
-namespace gold
-{
-    /**
-     * @brief 올라가는 형식의 dp계산하는 메소드
-     * @param 
-     * @param dp 연산을 저장할 dp 배열
-     * @param 배열의 크기
-     */
-    void get_dp_up(int* dp, int size)
+    for (int i = 0; i < size; i++)
     {
-        for (int i = 0; i < size; i++)
+        dp_up[i] = 1;
+
+        for (int j = 0; j < i; j++)
         {
-            for (int j = 1; j < i; j++)
+            if (A[j] < A[i] && dp_up[i] < dp_up[j] + 1)
+                dp_up[i] = dp_up[j] + 1;
+        }
+    }
+}
+
+/**
+ * @brief 내려가는 형식의 dp계산하는 메소드
+ * @param 배열의 크기
+ */
+void get_dp_down(int size)
+{
+    for (int i = size - 1; i > -1; i--)
+    {
+        dp_down[i] = 1;
+
+        for (int j = i; j < size; j++)
+        {
+            if (A[i] > A[j] && dp_down[i] < dp_down[j] + 1 )
             {
-                if()
+                dp_down[i] = dp_down[j] + 1;
             }
         }
     }
+}
 
-    void get_dp_down(int* dp, int size)
-    {
+int main()
+{
+    // 입력
+    int n;
+    cin >> n;
 
-    }
+    A = new int[n];
+    for (int i = 0; i < n; i++) 
+        cin >> A[i];
 
-    void solution()
-    {
-        // 입력
-        int time;
-        cin >> time;
+    //dp 초기화
+    dp_up = new int[n];
+    dp_down = new int[n];
+    dp = new int[n];
 
-        int* A = new int[time];
-        for (int index = 0; index < time; index++) cin >> A[index];
+    // dp 계산
+    get_dp_up(n);
+    get_dp_down(n);
 
-        //dp 초기화
-        int* dp_up = new int[time];
-        int* dp_down = new int[time];
+    for (int i = 0; i < n; i++)
+        dp[i] = dp_up[i] + dp_down[i] - 1;
 
-        // dp 계산
-        get_dp_up(dp_up);
-        get_dp_down(dp_down);
-
-        int ans = -100000000;
-
-        // 결과 출력
-        cout << ans << endl;
-    }
-} // !namespace gold
-} // !namespace boj
+    // 결과 출력
+    cout << *max_element(dp, dp + n) << endl;
+}
