@@ -23,6 +23,12 @@
 	* [1699](https://www.acmicpc.net/problem/1699),		20.06.01
 	* [13398](https://www.acmicpc.net/problem/13398),	20.06.02
 	* [11054](https://www.acmicpc.net/problem/11054),	20.06.03
+	* [1012](https://www.acmicpc.net/problem/1012),	20.06.05
+	* [1068](https://www.acmicpc.net/problem/1068),	20.06.06
+	* [1260](https://www.acmicpc.net/problem/1260),	20.06.07
+	* [1697](https://www.acmicpc.net/problem/1697),	20.06.08
+	* [2178](https://www.acmicpc.net/problem/2178),	20.06.09
+	* [2468](https://www.acmicpc.net/problem/2468),	20.06.10
 ### 디렉토리 경로
 boj::등급::문제
 ### namespace
