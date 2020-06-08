@@ -50,20 +50,18 @@ int main()
 				{
 					if (map[x - 1][y] == 0 && map[x][y] == 1)
 						count++;
+
+					if (map[x][y] == 1 && map[x][y + 1] == 1 && map[x - 1][y + 1])
+						count--;
 				}
 
 				else
 				{
-					if (map[x - 1][y] == 0 && map[x][y] && map[x][y - 1] == 0 && map[x][y] == 1)
-					{
-						if (map[x - 1][y - 1] == 0 && map[x - 1][y] == 1 && map[x][y - 1] == 1 && map[x][y] == 1)
-							count--;
-						count++;
-					}
+					if (map[x - 1][y] == 0 && map[x][y - 1] == 0 && map[x][y] == 1)
+						count--;
 				}
 			}
 		}
-
 		cout << "result = " << count << endl;
 	}
 }
