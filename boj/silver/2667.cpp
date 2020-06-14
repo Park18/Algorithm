@@ -18,6 +18,9 @@ int move_col[] = {-1, 1, 0, 0}; // 상, 하, 좌, 우
 
 using namespace std;
 
+/**
+ * @brief 입력 메소드
+ */
 void input()
 {
 	cin >> N;
@@ -31,6 +34,9 @@ void input()
 	}
 }
 
+/**
+ * @brief DFS 메소드
+ */
 void DFS(int row, int col)
 {
 	visit[row][col] = true;							// 방문 기록
@@ -53,7 +59,7 @@ void DFS(int row, int col)
 
 int main()
 {
-	input();
+	input(); // 입력
 
 	for (int row = 0; row < N; row++)
 	{
