@@ -69,12 +69,20 @@ int main()
 	
 	for (int row = 0; row < N; row++)
 	{
+		int zero_count = 0;
+
 		for (int col = 0; col < N; col++)
 		{
 			if (graph[row][col] && !visit[row][col])
 			{
 				DFS(row, col);
 				ans++;
+			}
+
+			if (!graph[row][col])
+			{
+				zero_count++;
+				if (zero_count == N) ans++;
 			}
 		}
 	}
