@@ -1,12 +1,11 @@
 
 #include <iostream>
 #include <vector>
-#include <queue>
 
-int N;
-std::vector<std::vector<int>> tree;
-bool* visit;
-int* parent;
+int N;								// 노드 개수
+std::vector<std::vector<int>> tree; // 링크 트리
+bool* visit;						// 방문기록
+int* parent;						// 부모노드
 
 using namespace std;
 
@@ -49,5 +48,5 @@ int main()
 	DFS(1);
 
 	for (int index = 2; index <= N; index++)
-		cout << parent[index] << endl;
+		cout << parent[index] << '\n';
 }
