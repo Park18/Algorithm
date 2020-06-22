@@ -1,3 +1,8 @@
+/**
+ * @date 20.06.21
+ * @brief BOJ 11725
+ * @url https://www.acmicpc.net/problem/11725
+ */
 
 #include <iostream>
 #include <vector>
@@ -9,6 +14,9 @@ int* parent;						// 부모노드
 
 using namespace std;
 
+/**
+ * @brief 입력 메소드
+ */
 void input()
 {
 	cin >> N;
@@ -27,6 +35,10 @@ void input()
 	}
 }
 
+/**
+ * @brief DFS 메소드
+ * @detil DFS로 방문하여 부모를 기록
+ */
 void DFS(int node)
 {
 	visit[node] = true;
