@@ -8,6 +8,8 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <queue>
+#include <utility>
 
 /**
  * @brief 연결된 노드의 정보
@@ -75,15 +77,40 @@ int DFS(int node)
 	return max_lenght;
 }
 
+void BFS(int start_node)
+{
+	visit[start_node] = true;
+	queue<pair<node_info, int>> wait_queue;
+	for (int index = 0; index < tree[start_node].size(); index++)
+		wait_queue.push({ tree[start_node].at(index), 0 });
+
+	for (; !wait_queue.empty();)
+	{
+		int node = wait_queue.front().first.link_node; // 연결된 노드
+		int lenght = wait_queue.front().first.length + wait_queue.front().second;	// 연결된 노드 사이의 걸이
+		wait_queue.pop();
+
+		visit[node] = true;
+		ans = max(ans, lenght);
+
+		for (int index = 0; index < tree[node].size(); index++)
+		{
+			if (!visit[tree[node].at(index).link_node])
+				wait_queue.push({ tree[node].at(index), lenght });
+		}
+	}
+}
+
 int main()
 {
 	input();
 
 	for (int start_node = 1; start_node <= V; start_node++)
 	{
-		ans = max(ans, DFS(start_node));
+		//ans = max(ans, DFS(start_node));
+		BFS(start_node);
 		memset(visit, 0, V + 1);
 	}
 
-	cout << ans << endl;
+	cout << ans << '\n';
 }
