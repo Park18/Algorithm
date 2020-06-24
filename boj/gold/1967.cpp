@@ -45,18 +45,11 @@ void input()
 		tree[root_node].push_back({ link_node, lenght });
 		tree[link_node].push_back({ root_node, lenght });
 	}
-
-	//for (int node = 1; node < V; node++)
-	//{
-	//	for (int col = 0; col < tree[node].size(); col++)
-	//	{
-	//		cout << tree[node].at(col).link_node << " ";
-	//	}
-	//
-	//	cout << endl;
-	//}
 }
 
+/**
+ * @brief 방문기록 초기화 메소드
+ */
 void reset()
 {
 	for (int loop = 0; loop <= V; loop++)
@@ -72,12 +65,18 @@ void DFS(int node, int lenght)
 {
 	visit[node] = true; // 방문 기록
 
-	int max_lenght = 0; // 현재 노드와 연결된 노드 사이의 최대 거리
+	// 현재 노드와 연결된 노드 확인
+	// 만약 연결된 노드 중, 방문하지 않은 곳이 있다면
+	// 현재 노드의 자식 노드 까지 연결된 지름을 계산 후
+	// 연산된 지름이 그 전에 최대 지름보다 크다면
+	// 최대 지름을 현재 지름으로, 
+	// 지름의 마지막 노드를 현재 노드의 자식 노드로 변경 한다.
+	// 그 후, 현재 노드의 자식 노드 이후의 지름이 있는지 확인을 위해 DFS(자식 노드) 호출
 	for (int index = 0; index < tree[node].size(); index++)
 	{
 		if (!visit[tree[node].at(index).link_node])
 		{
-			int link_lenght = lenght + tree[node].at(index).length;
+			int link_lenght = lenght + tree[node].at(index).length; // 방문 노드의 자식 노드까지 연결된 지름(가중치)
 			if (ans < link_lenght)
 			{
 				ans = link_lenght;
@@ -96,5 +95,6 @@ int main()
 	DFS(1, 0);
 	reset();
 	DFS(end_node, 0);
-	cout << ans << " " << end_node << endl;
+
+	cout << ans <<endl;
 }
