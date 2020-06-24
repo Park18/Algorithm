@@ -39,7 +39,7 @@
 	* [2250](https://www.acmicpc.net/problem/2250),		20.06.20
 	* [11725](https://www.acmicpc.net/problem/11725),	20.06.21
 	* [1167](https://www.acmicpc.net/problem/1167),		20.06.22
-	* [1068](https://www.acmicpc.net/problem/1068),		20.06.23
+	* [11437](https://www.acmicpc.net/problem/11437),	20.06.23
 	* [1967](https://www.acmicpc.net/problem/1967),		20.06.24
 ### 디렉토리 경로
 boj::등급::문제
