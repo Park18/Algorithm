@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="boj\silver\2591.cpp" />
+    <ClCompile Include="boj\gold\1922.cpp" />
+    <ClCompile Include="boj\silver\9934.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
