@@ -3,7 +3,8 @@
  * @url https://www.acmicpc.net/problem/14621
  */
 
-#include<iostream>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,33 @@ struct NODE
 {
 	bool sex;
 
-	NODE(bool sex) :sex(sex) {};
+	NODE(char sex)
+	{
+		switch (sex)
+		{
+		case 'M':
+			this->sex = MALE;	
+			break;
+
+		case 'W':
+			this->sex = FEMALE;
+			break;
+		}
+	}
 };
 
+int N, M;
+vector<NODE>graph;
+
+int main()
+{
+	cin >> N >> M;
+	for (int loop = 0; loop < N; loop++)
+	{
+		char sex;
+		cin >> sex;
+		graph.push_back(NODE(sex));
+	}
+
+
+}
