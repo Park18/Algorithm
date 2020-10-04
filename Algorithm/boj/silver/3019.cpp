@@ -17,7 +17,7 @@ void input_data()
 {
 	cin >> C >> P;
 
-	memset(tetris_floor, -100, C_MAX);
+	memset(tetris_floor, -100, sizeof(tetris_floor));
 	for (int index = 0; index < C; index++)
 		cin >> tetris_floor[index];
 }
