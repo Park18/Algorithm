@@ -43,7 +43,7 @@ void solved()
 			wait_queue.push(node);
 	}
 
-	while (!wait_queue.empty())
+	for (int loop = 0; loop < N;loop++)
 	{
 		solved_order.push_back(wait_queue.top());
 		wait_queue.pop();
