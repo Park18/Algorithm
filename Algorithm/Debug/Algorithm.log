@@ -1,3 +1,5 @@
-﻿  2056.cpp
-D:\Code\Algorithm\Algorithm\boj\gold\2056.cpp(72,29): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  2623.cpp
+D:\Code\Algorithm\Algorithm\boj\gold\2623.cpp(59,37): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Code\Algorithm\Algorithm\boj\gold\2623.cpp(72,29): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Code\Algorithm\Algorithm\boj\gold\2623.cpp(83,28): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Algorithm.vcxproj -> D:\Code\Algorithm\Debug\Algorithm.exe
