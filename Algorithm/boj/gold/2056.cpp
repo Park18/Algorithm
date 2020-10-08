@@ -1,6 +1,7 @@
 /**
  * @date 20.10.03
  * @url https://www.acmicpc.net/problem/2056
+ * @result 성공
  */
 
 #include <iostream>
@@ -12,11 +13,9 @@ using namespace std;
 
 struct NODE
 {
-	int start_tine;
+	int start_time;
 	int working_time;
 	int end_time;
-
-	//NODE(int working_time) :working_time(working_time) {};
 };
 
 #define GRAPH vector<int>
@@ -63,16 +62,16 @@ void solved()
 
 		// 방문 노드 종료 시간 갱신
 		// 결과 값 갱신
-		node_group[node].end_time = node_group[node].start_tine + node_group[node].working_time;
+		node_group[node].end_time = node_group[node].start_time + node_group[node].working_time;
 		result = max(result, node_group[node].end_time);
 
-		// 방문 노드의 자식 노드 시작 시간 갱신
+		// 방문 노드의 자식 노드 시작 시간 갱신(max(자식 시작, 방문 종료))
 		// 방문 노드의 자식 노드의 진입 차수 제거
 		// 방문 노드의 자식 노드의 진입 차수가 0이면 큐에 푸쉬
 		for (int index = 0; index < graph[node].size(); index++)
 		{
 			int children = graph[node][index];
-			node_group[children].start_tine = max(node_group[children].end_time, node_group[node].end_time);
+			node_group[children].start_time = max(node_group[children].start_time, node_group[node].end_time);
 
 			in_degree[children]--;
 			if (in_degree[children] == 0)
