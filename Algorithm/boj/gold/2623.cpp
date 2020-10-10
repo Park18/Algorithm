@@ -1,7 +1,7 @@
 /**
  * @date 20.10.07
  * @url https://www.acmicpc.net/problem/2623
- * @result 실패
+ * @result 성공
  */
 
 #include <iostream>
@@ -49,8 +49,16 @@ void solved()
 		if (in_degree[node] == 0)
 			wait_queue.push(node);
 
-	while (!wait_queue.empty())
+	for (int loop = 0; loop < N; loop++)
 	{
+		// 싸이클 발생
+		if (wait_queue.empty())
+		{
+			order.clear();
+			order.push_back(0);
+			return;
+		}
+
 		int node = wait_queue.front();
 		wait_queue.pop();
 
@@ -64,22 +72,11 @@ void solved()
 	}
 }
 
-void test()
-{
-	for (int node = 1; node <= N; node++)
-	{
-		cout << node << " - 진입차수: " << in_degree[node] << ", 자식 노드: ";
-		for (int index = 0; index < graph[node].size(); index++)
-			cout << graph[node][index] << " ";
-		cout << endl;
-	}
-}
-
 int main()
 {
 	input_data();
-	//solved();
-	test();
+	solved();
+
 	for (int index = 0; index < order.size(); index++)
 		cout << order[index] << endl;
 }
