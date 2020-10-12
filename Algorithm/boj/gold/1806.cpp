@@ -9,12 +9,11 @@
 
 using namespace std;
 
-#define N_MAX 10000
 #define S_MAX 987654321
 
 int N, S;
 vector<int> sequence;
-int result = N_MAX;
+int result = S_MAX;
 
 void input_data()
 {
@@ -36,11 +35,8 @@ void solved()
 
     while (true)
     {
-        if (sum > S)
+        if (sum >= S)
             sum -= sequence[start++];
-
-        else if (sum == S)
-            sum += sequence[end++];
 
         else if (end == N)
             break;
@@ -59,7 +55,7 @@ int main()
 
     solved();
 
-    if (result == N_MAX)
+    if (result == S_MAX)
         result = 0;
 
     cout << result << endl;
