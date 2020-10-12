@@ -1,7 +1,7 @@
 /**
  * @date 20.10.11
  * @url https://www.acmicpc.net/problem/2230
- * @result 실패
+ * @result 성공
  */
 #include <iostream>
 #include <vector>
@@ -37,17 +37,22 @@ void solved()
     while (true)
     {
         if (sub >= M)
-            sub = abs(sequence[start++] - sequence[end]);
+            sub = sequence[end] - sequence[start++];
 
         else if (end == N)
             break;
 
-        else
-            sub = abs(sequence[start] - sequence[end++]);
+        else // (sub < M)
+            sub = sequence[end++] - sequence[start];
 
-        if (sub >= M)
+        if (sub > M)
             result = min(result, sub);
 
+        else if (sub == M)
+        {
+            result = M;
+            return;
+        }
     }
 }
 
@@ -56,9 +61,7 @@ int main()
     input_data();
     sort(sequence.begin(), sequence.end());
 
-    for (auto value : sequence)
-        cout << value << endl;
-    //solved();
+    solved();
 
     cout << result << endl;
 }
