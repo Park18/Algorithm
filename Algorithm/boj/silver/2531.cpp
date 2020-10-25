@@ -56,8 +56,8 @@ int main()
 
 	solved();
 
-	if (result.size() != k)
-		cout << k << endl;
+	if (result.size() < k)
+		cout << result.size() << endl;
 	else
-		cout << k + 1 << endl;
+		cout << result.size() + 1 << endl;
 }
