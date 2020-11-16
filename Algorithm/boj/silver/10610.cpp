@@ -1,7 +1,7 @@
 /**
  * @date 20.11.06
  * @url https://www.acmicpc.net/problem/10610
- * @result 실패 런타임 에러
+ * @result 성공
  */
 
 #include <iostream>
@@ -11,21 +11,20 @@
 using namespace std;
 
 string N;
-int result = 0;
 
 void solved()
 {
 	sort(N.begin(), N.end(), greater<>());
 
 	int sum = 0;
-	for (auto ch_num : N)
-		sum += ch_num - '0';
+	for (int i = 0; i < N.size(); i++)
+		sum += N[i] - '0';
 
 	if (sum % 3 != 0 || N[N.size() - 1] != '0')
-		result = -1;
+		cout << -1 << endl;
 
 	else
-		result = stoi(N);
+		cout << N << endl;
 }
 
 int main()
@@ -33,6 +32,4 @@ int main()
 	cin >> N;
 
 	solved();
-
-	cout << result << endl;
 }
