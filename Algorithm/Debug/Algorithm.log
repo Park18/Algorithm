@@ -1,2 +1,32 @@
-﻿  2437.cpp
-  Algorithm.vcxproj -> D:\Code\Algorithm\Debug\Algorithm.exe
+﻿  1446.cpp
+D:\Code\Algorithm\Algorithm\boj\gold\1446.cpp(39,22): warning C4244: '인수': 'float'에서 'const _Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=int
+          ]
+D:\Code\Algorithm\Algorithm\boj\gold\1446.cpp(54,29): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xstddef(127,22): error C2676: 이항 '<': 'const _Ty'이(가) 이 연산자를 정의하지 않거나 미리 정의된 연산자에 허용되는 형식으로의 변환을 정의하지 않습니다.
+          with
+          [
+              _Ty=load_info
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xstddef(126): message : 클래스 템플릿 멤버 함수 'bool std::less<_Ty>::operator ()(const _Ty &,const _Ty &) const'을(를) 컴파일하는 중입니다.
+          with
+          [
+              _Ty=load_info
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1546): message : 컴파일되는 함수 템플릿 인스턴스화 'bool std::less<_Ty>::operator ()(const _Ty &,const _Ty &) const'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=load_info
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\queue(295): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::less<_Ty>'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=load_info
+          ]
+D:\Code\Algorithm\Algorithm\boj\gold\1446.cpp(42): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::priority_queue<load_info,std::vector<load_info,std::allocator<load_info>>,std::less<_Ty>>'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=load_info
+          ]
