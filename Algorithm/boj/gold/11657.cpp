@@ -1,8 +1,7 @@
 /**
  * @date 20.11.17
  * @url https://www.acmicpc.net/problem/11657
- * @result 출력초과
- * @compare_url https://yabmoons.tistory.com/380
+ * @result 성공
  */
 
 #include <iostream>
@@ -10,7 +9,7 @@
 
 using namespace std;
 
-#define INF 987654321
+#define INF 2e9
 
 struct edge_info
 {
@@ -18,7 +17,6 @@ struct edge_info
 	int to;
 	int cost;
 
-	//edge_info() {};
 	edge_info(int from, int to, int cost) :from(from), to(to), cost(cost) {};
 };
 
@@ -28,8 +26,6 @@ vector<edge_info> graph;
 void input_data()
 {
 	cin >> N >> M;
-	//graph.assign(M, edge_info());
-
 	for (int index = 0; index < M; index++)
 	{
 		int from, to, cost;
@@ -45,7 +41,7 @@ void input_data()
 
 void solved()
 {
-	vector<int> dist(N + 1, INF);
+	vector<long long> dist(N + 1, INF);
 	dist[1] = 0;
 
 	for (int loop = 1; loop <= N - 1; loop++)
