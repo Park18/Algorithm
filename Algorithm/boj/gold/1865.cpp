@@ -1,7 +1,7 @@
 /**
  * @date 20.11.16
  * @url https://www.acmicpc.net/problem/1865
- * @result 실패
+ * @result 성공
  */
 
 #include <iostream>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#define INF 10000
+#define INF 987654321
 
 struct edge_info
 {
@@ -59,10 +59,12 @@ string solved()
 			int start = graph[index].start;
 			int end = graph[index].end;
 			int cost = graph[index].cost;
-
-			if (dist[start] == INF)
-				continue;
 			
+			// 시작점과 열결되어 있지 않은 그래프에서 발생하는
+			// 음의 사이클도 잡아야 하기 때문에 아래의 if문을 생략한다.
+			// if (dist[start] == INF)
+			// 	continue;
+
 			if (dist[end] > dist[start] + cost)
 				dist[end] = dist[start] + cost;
 		}
@@ -73,9 +75,6 @@ string solved()
 		int start = graph[index].start;
 		int end = graph[index].end;
 		int cost = graph[index].cost;
-	
-		if (dist[start] == INF)
-			continue;
 	
 		if (dist[end] > dist[start] + cost)
 			return "YES";
@@ -93,5 +92,7 @@ int main()
 		input_data();
 
 		cout << solved() << endl;
+
+		graph.clear();
 	}
 }
