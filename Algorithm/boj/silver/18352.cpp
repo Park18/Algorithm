@@ -1,95 +1,93 @@
 /**
  * @date 20.11.13
  * @url https://www.acmicpc.net/problem/18352
- * @result 메모리초과
+ * @result 성공
  */
 
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
-#define INF 300000
+#define INF 2147483647
 
-int N, M, K, X;
-vector<int> graph[300000];
-vector<int> cost_group;
-vector<bool> visit;
+struct edge_info
+{
+	int to;
+	int cost;
+
+	edge_info() {};
+	edge_info(int to, int cost) :to(to), cost(cost) {};
+};
+
+struct upper
+{
+	bool operator() (edge_info a, edge_info b)
+	{
+		return a.cost > b.cost;
+	}
+};
+
+int N, M, K, X; // 도시의 수, 도로의 개수, 최단 거리, 출발 도시
+vector<vector<edge_info>> graph;
 vector<int> result;
 
 void input_data()
 {
-	cin >> N >> M >> K >> X;	
+	cin >> N >> M >> K >> X;
 
-	for (int city = 0; city < M; city++)
-	{
-		graph[city].assign(N, INF);
-		graph[city][city] = 0;
-	}
-
+	graph.assign(N + 1, vector<edge_info>(0));
 	for (int loop = 0; loop < M; loop++)
 	{
 		int from, to;
 		cin >> from >> to;
 
-		graph[from - 1][to - 1] = 1;
-		graph[to - 1][from - 1] = 1;
+		graph[from].push_back({ to, 1 });
 	}
-
-	visit.assign(N, false);
-	cost_group.assign(N, 0);
 }
 
-int get_min_cost_index()
+void solved(int start)
 {
-	int min = INF;
-	int index = 0;
+	vector<int> dist(N + 1, INF);
+	dist[start] = 0;
 
-	for (int city = 0; city < N; city++)
+	priority_queue <edge_info, vector<edge_info>, upper> pq;
+	pq.push({ start, 0 });
+
+	while (!pq.empty())
 	{
-		if (cost_group[city] < min && !visit[city])
+		int visit = pq.top().to;
+		int cost = pq.top().cost;
+		pq.pop();
+
+		for (int index = 0; index < graph[visit].size(); index++)
 		{
-			min = cost_group[city];
-			index = city;
+			int next = graph[visit][index].to;
+			int next_dist = graph[visit][index].cost;
+
+			if (dist[next] > cost + next_dist)
+			{
+				dist[next] = cost + next_dist;
+				pq.push({ next, dist[next] });
+			}
 		}
 	}
 
-	return index;
-}
-
-void solved(int row)
-{
-	for (int city = 0; city < N; city++)
-		cost_group[city] = graph[row][city];
-
-	visit[row] = true;
-	for (int loop = 0; loop < N - 2; loop++)
-	{
-		int next_city = get_min_cost_index();
-		visit[next_city] = true;
-
-		for (int col = 0; col < M; col++)
-		{
-			if (!visit[col])
-				if (cost_group[next_city] + graph[next_city][col] < cost_group[col])
-					cost_group[col] = cost_group[next_city] + graph[next_city][col];		
-		}
-	}
-
-	for (int city = 0; city < N; city++)
-		if (cost_group[city] == K)
-			result.push_back(city + 1);
+	for (int city = 1; city <= N; city++)
+		if (dist[city] == K)
+			result.push_back(city);
 }
 
 int main()
 {
 	input_data();
 
-	solved(X - 1);
+	solved(X);
 
 	if (result.empty())
 		cout << -1 << endl;
 	else
-		for (int index = 0; index < result.size(); index++)
-			cout << result[index] << endl;
+		for (auto city : result)
+			cout << city << endl;
 }
