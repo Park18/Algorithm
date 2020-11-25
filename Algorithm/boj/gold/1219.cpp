@@ -2,7 +2,7 @@
  * @date 20.11.18
  * @url https://www.acmicpc.net/problem/1219
  * @result ½ÇÆÐ
- * @compre_url 
+ * @source_url https://colorscripter.com/s/KVWmj2C
  */
 
 #include <iostream>
@@ -81,7 +81,7 @@ void solved()
 		if (dist[from] == INF)
 			continue;
 
-		if (dist[to] < dist[from] + cost + income_group[to])
+		if ((to == ::end) && (dist[to] < dist[from] + cost + income_group[to]))
 		{
 			cout << "Gee" << endl;
 			return;
